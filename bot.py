@@ -13,7 +13,7 @@ app = Client("font-bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 @app.on_message(filters.command("start"))
 async def start(client, message):
-    await message.reply_text(f"Hello {message.from_user.mention}, I'm a Font Style Bot.\n\nSend me any text and I'll style it for you.")
+    await message.reply_text(f"**Hello {message.from_user.mention},\nI'm a Font Style Bot, Send me any text and I'll style it for you.**")
 
 @app.on_message(filters.private & filters.text)
 async def style_buttons(c, m, cb=False):
@@ -53,7 +53,7 @@ async def style_buttons(c, m, cb=False):
             title = m.text.split(" ", 1)[1]
             await m.reply_text(title, reply_markup=InlineKeyboardMarkup(buttons), reply_to_message_id=m.id)                     
         else:
-            await m.reply_text(text="Ente Any Text Eg:- `/font [text]`")    
+            await m.reply_text(text="Enter any text Eg: `/font [text]`")    
     else:
         await m.answer()
         await m.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
