@@ -11,6 +11,10 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 app = Client("font-bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
+@app.on_message(filters.command("start"))
+async def start(client, message):
+    await message.reply_text(f"Hello {message.from_user.mention}, I'm a Font Style Bot.\n\nSend me any text and I'll style it for you.")
+
 @app.on_message(filters.private & filters.text)
 async def style_buttons(c, m, cb=False):
     buttons = [[
